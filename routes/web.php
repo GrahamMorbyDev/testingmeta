@@ -1,21 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\AgentController;
 
-/**
- * Admin routes - simple inclusion for agent CRUD.
- *
- * If your application groups admin routes differently (RouteServiceProvider, separate file, etc.)
- * move this route registration there. This file provides a minimal, conventional binding.
- */
+// Include the run failure routes if present. This avoids overwriting all
+// application routes while ensuring the new endpoints are available.
+if (file_exists(__DIR__ . '/run_failures.php')) {
+    require __DIR__ . '/run_failures.php';
+}
 
-Route::middleware(['web', 'auth'])
-    ->prefix('admin')
-    ->name('admin.')
-    ->group(function () {
-        // Agent resource routes
-        Route::resource('agents', AgentController::class);
-    });
-
-// You can add public/test/demo routes below if needed.
+// A minimal root route to keep the file valid. Replace/extend this in the
+// main application as needed.
+Route::get('/', function () {
+    return response('Application routes');
+});
