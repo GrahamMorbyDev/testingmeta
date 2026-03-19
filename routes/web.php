@@ -1,21 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\AgentController;
+use App\Http\Controllers\ActivityController;
 
-/**
- * Admin routes - simple inclusion for agent CRUD.
- *
- * If your application groups admin routes differently (RouteServiceProvider, separate file, etc.)
- * move this route registration there. This file provides a minimal, conventional binding.
- */
-
-Route::middleware(['web', 'auth'])
-    ->prefix('admin')
-    ->name('admin.')
-    ->group(function () {
-        // Agent resource routes
-        Route::resource('agents', AgentController::class);
-    });
-
-// You can add public/test/demo routes below if needed.
+// Activity routes: listing and recording
+Route::middleware(['auth'])->group(function () {
+    Route::get('activities', [ActivityController::class, 'index'])->name('activities.index');
+    Route::post('activities', [ActivityController::class, 'store'])->name('activities.store');
+});
