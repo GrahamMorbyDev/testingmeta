@@ -1,0 +1,58 @@
+/* Minimal styles for the activity feed component. Keep these conservative so they fit into existing apps. */
+
+.activity-feed {
+  border: 1px solid var(--border-color, #e6e6e6);
+  border-radius: 6px;
+  background: var(--bg, #fff);
+  padding: 12px;
+  max-width: 700px;
+}
+
+.activity-feed-header {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.activity-feed-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.activity-item {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border-radius: 6px;
+  transition: background 0.12s ease;
+}
+.activity-item:hover { background: rgba(0,0,0,0.02); }
+
+.activity-item-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  margin-right: 12px;
+  flex: 0 0 40px;
+}
+
+.icon-workflow { background: linear-gradient(135deg,#4f46e5,#06b6d4); }
+.icon-agent { background: linear-gradient(135deg,#059669,#10b981); }
+.icon-update { background: linear-gradient(135deg,#9333ea,#f97316); }
+.icon-generic { background: #cbd5e1; }
+
+.activity-item-body { flex: 1 1 auto; min-width: 0; }
+.activity-item-title { font-weight: 600; font-size: 14px; color: var(--text, #111827); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.activity-item-subtitle { font-size: 13px; color: var(--muted, #6b7280); margin-top: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.activity-item-time { margin-left: 12px; color: var(--muted, #6b7280); font-size: 12px; flex: 0 0 auto; }
+
+.activity-feed-loading, .activity-feed-empty, .activity-feed-error { padding: 12px; color: var(--muted, #6b7280); }
+.activity-feed-actions { display: flex; justify-content: center; padding-top: 8px; }
+.activity-feed-end { color: var(--muted, #6b7280); font-size: 13px; }
+
+/* button fallback styling */
+.btn { cursor: pointer; border: 1px solid #d1d5db; background: #fff; padding: 6px 10px; border-radius: 6px; }
+.btn:disabled { opacity: 0.6; cursor: default; }
+.btn-secondary { background: #f8fafc; }
